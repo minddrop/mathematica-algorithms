@@ -12,7 +12,7 @@ QSort[{}]:= {};
 QSort[arrayImmutable_] := Module[{array, tmp},
   If[Length[arrayImmutable]<2,Return[arrayImmutable]];
   array = arrayImmutable;
-  IF[array[[1]] < array[[2]], 
+  If[array[[1]] < array[[2]], 
     tmp = array[[1]];
     array[[1]] = array[[2]];
     array[[2]] = tmp;
