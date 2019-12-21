@@ -1,0 +1,39 @@
+MergeSort[arrayImmutable] := Module[{array, left, right, split},
+  If[Length[arrayImmutable] < 2, Return[arrayImmutable]];
+  array = arrayImmutable;
+  split = Floor[Length[arrayImmutable]/2];
+  left = arrayImmutable[[;; split]];
+  right = arrayImmutable[[split + 1 ;;]];
+  left = MergeSort[left];
+  right = MergeSort[right];
+  Return[merge[left, right]];
+]
+
+merge[left, right_] := Module[{ret, i, j},
+  i = 0;
+  j = 0;
+  ret = {};
+  While[True,
+    If[j < Length[right],
+      If[i < Length[left] && left[[i + 1]] <= right[[j + 1]],
+        AppendTo[ret, left[[i + 1]]],
+        i++
+      ],
+      If[i < Length[left],
+        AppendTo[ret, left[[i + 1]]],
+        i++
+      ];
+    ];
+    If[i < Length[left],
+      If[j < Length[right] && left[[i + 1]] > right[[j + 1]], 
+        AppendTo[ret, right[[j + 1]]],
+        j++
+      ],
+      If[j < Length[right], 
+        AppendTo[ret, right[[j + 1]]], 
+        j++
+      ];
+    ];
+    If[i == Length[left] && j == Length[right], Return[ret];];
+  ];
+]
