@@ -1,0 +1,11 @@
+Test[length_] := Module[{T, S, i},
+  For[i = 1, i < 10, i++,
+   T = RandomInteger[1000, length];
+   Print["Input: ", T];
+   S = Timing[QuickSort[T]];
+   Print["QuickSort: ", "(計算時間 = ", S[[1]], "sec.)"];
+ S = Timing[BubbleSort[T]];
+ Print["BubbleSort: ", "(計測時間 = ", S[[1]], "sec.)"]; 
+ S = Timing[MergeSort[T]];
+ Print["MergeSort: ","(計測時間 = ", S[[1]], "sec.)"];
+   Print[""];]]
