@@ -1,0 +1,30 @@
+QuickSort[{}] := {}
+QuickSort[{first, others__}] :=
+  Return[Join
+    [QuickSort[Select[{others}, # < first &]],
+    {first},
+    QuickSort[Select[{others}, # >= first &]]
+  ]
+];
+
+(*
+QSort[{}]:= {};
+QSort[arrayImmutable_] := Module[{array, tmp},
+  If[Length[arrayImmutable]<2,Return[arrayImmutable]];
+  array = arrayImmutable;
+  IF[array[[1]] < array[[2]], 
+    tmp = array[[1]];
+    array[[1]] = array[[2]];
+    array[[2]] = tmp;
+    Print[array[[1]]];];
+    Return[Join[
+      QSort[Select[array,#<array[[1]]&]],
+      QSort[Select[array,#[GreaterEqual]array[[1]]&]]
+    ]]
+  ])
+  Return[Join[
+    QSort[Select[array,#<array[[1]]&]],
+    QSort[Select[array,#[GreaterEqual]array[[1]]&]]
+  ]]
+]
+*)
