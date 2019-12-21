@@ -1,0 +1,14 @@
+BubbleSort[{}] := {}
+BubbleSort[array_] := Module[{i, j, tmp, T},
+  T = array;
+  For[i = 1, i < Length[T] - 1, i++,
+    For[j = Length[T] , j >  i, j--,
+      If[T[[j - 1]] > T[[j]],
+        tmp = T[[j - 1]];
+        T[[j - 1]] = T[[j]];
+        T[[j]] = tmp;
+      ];
+    ];
+  ];
+  Return[T]
+]
